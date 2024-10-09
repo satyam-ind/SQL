@@ -3,10 +3,31 @@
 -- Here, we will focus on the players & teams tables.
 
 -- 1. List all distinct team names from the Teams table.
+SELECT DISTINCT name
+FROM teams;
+
 -- 2. List the names of all players in alphabetical order.
+SELECT first_name, last_name
+FROM players
+ORDER BY first_name ASC, last_name ASC;
+
 -- 3. Select the top 5 players based on batting averages.
+-- batting average is RBI
+SELECT RBI
+FROM performances
+ORDER BY RBI DESC
+LIMIT 5;
+
 -- 4. Count the number of players in each team.
+SELECT team_id, COUNT(DISTINCT player_id)
+FROM performances
+GROUP BY team_id;
+
 -- 5. Which teams have more than 10 players?
+SELECT team_id, COUNT(DISTINCT player_id)
+FROM performances
+GROUP BY team_id
+HAVING COUNT(DISTINCT player_id) > 100;
 
 -- Questions for Additional Practice
 -- LIMIT
